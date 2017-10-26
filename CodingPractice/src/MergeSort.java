@@ -1,19 +1,19 @@
 public class MergeSort {
-    public static void mergesort (int[] array) {
+    static void mergeSort (int[] array) {
         int[] helper = new int[array.length]; // Extra Space
-        mergesort (array, helper, 0, array.length-1);
+        mergeSort (array, helper, 0, array.length-1);
     }
 
-    public static void mergesort (int[] array, int[] helper, int left, int right) {
+    static void mergeSort (int[] array, int[] helper, int left, int right) {
         if (left < right) {
             int mid = (left + right) >>> 1;
-            mergesort (array, helper, left, mid); // Sort Left
-            mergesort (array, helper, mid+1, right); // Sort Right
+            mergeSort (array, helper, left, mid); // Sort Left
+            mergeSort (array, helper, mid+1, right); // Sort Right
             merge (array, helper, left, mid, right); // Merge
         }
     }
 
-    public static void merge (int[] array, int[] helper, int left, int mid, int right) {
+    static void merge (int[] array, int[] helper, int left, int mid, int right) {
         if (array[mid] <= array[mid+1]) return; // Since two parts are already sorted
 
        for (int i=left; i<=right; i++) { // Copy elements to helper array
@@ -41,7 +41,7 @@ public class MergeSort {
 
     public static void main(String[] args) {
         int[] a = {6, 4, 3, 5, 2, 8, 1, 2, 2, 7};
-        mergesort (a);
+        mergeSort (a);
         for (int i : a){
             System.out.println(i);
         }
